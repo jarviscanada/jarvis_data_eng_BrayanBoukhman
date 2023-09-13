@@ -1,6 +1,7 @@
-\c host_agent;
+-- Switch to host agent
+c host_agent;
 
--- Create a host_info table
+-- Create a host_info table only if it does not exists
 CREATE TABLE IF NOT EXISTS PUBLIC.host_info
 (
     id               SERIAL NOT NULL,
@@ -18,7 +19,7 @@ CREATE TABLE IF NOT EXISTS PUBLIC.host_info
     UNIQUE (hostname)
 );
 
--- Create a host_usage table
+-- Create a host_usage table only if it does not exists
 CREATE TABLE IF NOT EXISTS PUBLIC.host_usage
 (
     "timestamp"    TIMESTAMP NOT NULL,
