@@ -30,31 +30,31 @@ case $cmd in
   fi
 
   # Create container
-	docker volume create pgdate
+  docker volume create pgdate
   # Start the container use username and password provided use -u and -e tags to add them then run
-	docker run --name jrvs-psql -u="$db_username" -e POSTGRES_PASSWORD="$db_password" -d -v pgdata:/var/lib/postgresql/data -p 5432:5432 postgres:9.6-alpine
-	exit $?
-	;;
+  docker run --name jrvs-psql -u="$db_username" -e POSTGRES_PASSWORD="$db_password" -d -v pgdata:/var/lib/postgresql/data -p 5432:5432 postgres:9.6-alpine
+  exit $?
+  ;;
 
   start|stop)
   # Check instance status; exit 1 if container has not been created
   if [ -z "$container_status" ]; then
-  		echo 'Container does not exist'
-  		exit 1
+    echo 'Container does not exist'
+    exit 1
   elif [ "$cmd" = "start" ] && [ "$container_status" = "running" ]; then
-        echo 'Container already running'
-        exit 1
+    echo 'Container already running'
+    exit 1
   elif [ "$cmd" = "stop" ] && [ "$container_status" = "exited" ]; then
-        echo 'Container already stopped'
-        exit 1
+    echo 'Container already stopped'
+    exit 1
   fi
 
   # Start or stop the container
-	docker container "$cmd" jrvs-psql
-	exit $?
-	;;
+  docker container "$cmd" jrvs-psql
+  exit $?
+  ;;
 
-  *)
+*)
 	echo 'Illegal command'
 	echo 'Commands: start|stop|create'
 	exit 1
