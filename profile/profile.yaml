@@ -1,0 +1,131 @@
+# Preferred name (Characters only)
+name: "Brayan Boukhman"
+# Your GitHub repo root URL
+github_repo_root_url: https://github.com/jarviscanada/jarvis_data_eng_BrayanBoukhman
+
+# Introduce yourself, your academic and professional background.
+# What excites you about the software industry and your passion. At least 80 words
+summary: I have a proven track record of success in developing and maintaining enterprise applications for healthcare and financial businesses, encompassing large and small enterprises. My experience includes proficient coding, debugging, testing, and troubleshooting of software applications, with comprehensive knowledge of the Software Development Life Cycle (SDLC). I am well-versed in Agile methodologies, utilizing Scrum and test-driven development (TDD) and the Waterfall model. I have consistently delivered high-quality solutions that meet and exceed client expectations, fostering solid relationships built on trust and reliability.
+
+# Group your skills by level.
+# Your skills can be anything software related (e.g. language, frameworks, methodologies, software, etc.).
+skills:
+  # At least 5 skills
+  proficient:
+    - Java
+    - Linux/Bash
+    - RDBMS/SQL
+    - Agile/Scrum
+    - Git
+  # At least 5 skills
+  competent:
+    - Spring Boot
+    - Spring Framework
+    - Hibernate
+    - Gradle
+    - Maven
+  # At least 5 skills
+  familiar:
+    - Amazon AWS
+    - GraphQL
+    - Selenium
+    - JavaScript
+    - React
+
+# List of Jarvis projects
+jarvis_projects:
+  - name: "Cluster Monitor"
+    git_url: "/linux_sql"
+    # The project description allows hiring managers to understand your project and technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: I developed a system to document and store hardware specs and resource usage for a Linux cluster in PostgreSQL. I created an MVP for Jarvis Linux Cluster Administration, including scripts to gather hardware data, track server usage, and launch PostgreSQL and its docker container. This resulted in a successful functional MVP for the Jarvis Linux Cluster Administration.
+  - name: "Core Java Apps"
+    git_url: "/core_java"
+    description:
+      - "Twitter App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
+      - "JDBC App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
+      - "Grep App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
+  - name: "Springboot App"
+    git_url: "/springboot"
+    description: ""
+  - name: "Python Data Analytics"
+    git_url: "/python_data_anlytics"
+    description: ""
+  - name: "Hadoop"
+    git_url: "/hadoop"
+    description: ""
+  - name: "Spark"
+    git_url: "/spark"
+    description: ""
+  - name: "Cloud/DevOps"
+    git_url: "/cloud_devops"
+    description: ""
+
+# List of personal or academic projects
+# Feel free to add more projects
+highlighted_projects:
+    #project name
+  - name: "Web app for resturant"
+    #URL is optional
+    git_url: "https://github.com/jarviscanada/jarvis_profile_builder"
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: Suspendisse a tincidunt odio. Suspendisse posuere luctus aliquet. Quisque magna tellus, tempor vitae arcu sed, volutpat scelerisque lacus. Aliquam varius pulvinar dapibus. Ut a tincidunt sem. Aenean sollicitudin fringilla erat ut imperdiet. Phasellus fermentum, enim vitae laoreet elementum, eros nisl hendrerit lorem.
+  - name: "Machine Learning"
+    git_url:
+    description: Suspendisse a tincidunt odio. Suspendisse posuere luctus aliquet. Quisque magna tellus, tempor vitae arcu sed, volutpat scelerisque lacus. Aliquam varius pulvinar dapibus. Ut a tincidunt sem. Aenean sollicitudin fringilla erat ut imperdiet. Phasellus fermentum, enim vitae laoreet elementum, eros nisl hendrerit lorem.
+
+#List of professional experience
+#The job description allows hiring managers to understand your job and the technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
+#The description must be more than 25 words. If your experience is not software related, please focus on soft skills and achievements (e.g. team collaboration, problem-solving, improvements, communication).
+professional_experience:
+  #Write your Jarvis role as a professional experience rather than training.
+  - title: "FullStack Developer"
+    company: "Brightsquid Secure Communications Corporation"
+    duration: "Mar 2021 - Mar 2023,"
+    description: "Worked on and Designed a HIPAA-compliant web-based messaging system to enable communication between a clinic and its patients. A method currently used by 80000 healthcare professionals and 395000 patients in Canada and the US. Worked on an Appointment Reminder application, including integration with various TELUS EMRs, sending patients automated appointment reminders with pre-appointment questionnaires, and reducing No-Show rates."
+  - title: "Student Analyst - QA"
+    company: "OMERS"
+    duration: "May 2019 - Aug 2019,"
+    description: "Developed, modified, and executed test automation scripts utilizing Selenium and Cyprus to ensure the functional integrity of the applications. Worked with QA team members on QA internal process improvement initiatives and conducted the review of test plans and test case documents to ensure appropriate coverage."
+  - title: "Instructor Assistant"
+    company: "Wilfrid Laurier University Waterloo Ontario"
+    duration: "Sep 2018 - Apr 2018"
+    description: "Supported and marked over 100 students in Data Structures in Python, Java & C. Acted as a liaison between professor and student by providing weekly assignments through correspondence emails and assisting the students if needed."
+  - title: "Student Analyst, Full Stack Developer"
+    company: "OMERS"
+    duration: "May 2018 - Aug 2018"
+    description: "Participated in solution evaluation, developed Proof of Concepts (PoCs), ensuring code quality, optimized application performance, and low maintenance cost, and maintained Application infrastructure. I was predominantly using front-end tools in React framework."
+
+#List of edcuation
+education: 
+  - school_name: "Wilfrid Laurier University"
+    duration: "2016 - 2020"
+    degree: "Bachelor of Computer Science"
+    department: "Physics and Computer Science"
+    awards_achievements:
+      - "Dean's List (2020, 2021)"
+      - "GPA: x/4.0"
+
+#Optional section
+others:
+  #category
+  - title: "Certificates"
+    #list of items
+    bullets:
+      - "Udacity Machine Learning (2019)"
+  - title: "Awards"
+    bullets:
+      - "Winner"
+  - title: "Activities/Hobbies"
+    bullets:
+      - "Basketball player"
+      - "Competitive gaming"
+      - "Volunteer, ABC Food bank: Ut enim ad minim veniam"
+
+
+
+
+
+
+
+
