@@ -14,6 +14,9 @@ psql_username=$5
 psql_password=$6
 symbols=${@7}
 
+#set up env var for pql cmd
+export PGPASSWORD=$psql_password
+
 for symbol in symbols
 do
   #needs jq to process the responce, could not get this part
@@ -26,8 +29,6 @@ do
   insert_stmt="INSERT INTO quote_practice(symbol, open, high, low, cpu_mhz, price, volume)
                VALUES('$responce.symbol', '$responce.open', '$responce.high', '$responce.low', '$responce.price', '$responce.volume')"
 
-  #set up env var for pql cmd
-  export PGPASSWORD=$psql_password
   #Insert date into a database
   psql -h $psql_host -p $psql_port -d $db_name -U $psql_user -c "$insert_stmt"
 
