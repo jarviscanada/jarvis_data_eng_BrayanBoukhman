@@ -15,7 +15,7 @@ $$
 SELECT cpu_number, id AS host_id, total_mem FROM host_info ORDER BY cpu_number, total_mem DESC;
 
 -- Average memory usage (needs fixing)
-SELECT hu.host_id as host_id, hi.hostname as host_name, round5(hu.timestamp) AS timestmap, (AVG(hi.total_mem - hu.memory_free)) AS avg_used_mem_percentage
+SELECT hu.host_id as host_id, hi.hostname as host_name, round5(hu.timestamp) AS timestamp, (AVG(hi.total_mem - hu.memory_free)) AS avg_used_mem_percentage
 FROM host_usage hu
 INNER JOIN public.host_info hi
 on hi.id = hu.host_id
