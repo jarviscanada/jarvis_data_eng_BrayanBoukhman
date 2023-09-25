@@ -15,12 +15,16 @@ $$
 SELECT cpu_number, id AS host_id, total_mem FROM host_info ORDER BY cpu_number, total_mem DESC;
 
 -- Average memory usage (needs fixing)
-SELECT hu.host_id as host_id, hi.hostname as host_name, round5(hu.timestamp) AS timestamp, (AVG(hi.total_mem - hu.memory_free)) AS avg_used_mem_percentage
-FROM host_usage hu
-INNER JOIN public.host_info hi
-on hi.id = hu.host_id
-group by  hu.host_id, hi.hostname, round5(hu.timestamp)
-order BY host_id, timestamp;
+SELECT
+    host_usage.host_id,
+    host_info.hostname,
+    round5(host_usage.timestamp) AS timestamp,
+    ROUND(AVG(((host_info.total_mem-(host_usage.memory_free*1000))::numeric/host_info.total_mem)*100),2) AS avg_used_mem_percentage
+FROM host_usage
+         INNER JOIN host_info ON host_usage.host_id = host_info.id
+GROUP BY host_usage.host_id, host_info.hostname, round5(host_usage.timestamp)
+HAVING COUNT(*) = 5
+ORDER BY host_usage.host_id, round5(host_usage.timestamp);
 
 
 -- Detect host failure
