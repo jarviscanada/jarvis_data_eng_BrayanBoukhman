@@ -18,21 +18,25 @@ skills:
     - Agile/Scrum
     - Git
     - Docker
-  # At least 5 skills
-  competent:
+    - sql
     - Spring Boot
     - Spring Framework
     - Hibernate
     - Gradle
     - Maven
   # At least 5 skills
-  familiar:
-    - Amazon AWS
+  competent:
     - GraphQL
-    - Selenium
     - JavaScript
     - React
-
+    - Redux
+    - React Router
+  familiar:
+    - Amazon AWS
+    - Selenium
+    - Amazon Lambda
+    - Amazon RDS
+    - Amazon S3 bucket
 # List of Jarvis projects
 jarvis_projects:
   - name: "Cluster Monitor"
@@ -40,24 +44,13 @@ jarvis_projects:
     # The project description allows hiring managers to understand your project and technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
     # The project description must start with an action verb (https://bit.ly/3guO98u)
     description: I developed a system to document and store hardware specs and resource usage for a Linux cluster in PostgreSQL. I created an MVP for Jarvis Linux Cluster Administration, including scripts to gather hardware data, track server usage, and launch PostgreSQL and its docker container. This resulted in a successful functional MVP for the Jarvis Linux Cluster Administration.
+  - name: "SQL application"
+    git_url: "/sql"
+    description: This SQL project, created by me solely for learning purposes, focuses on developing and demonstrating my SQL proficiency. It involves using various SQL keywords to address specific questions and scenarios, serving as a valuable tool for skill enhancement. The project's objectives include hands-on skill development, real-world applicability, problem-solving mastery, immediate feedback, and portfolio enrichment.
   - name: "Core Java Apps"
     git_url: "/core_java"
     description: ""
-  - name: "Springboot App"
-    git_url: "/springboot"
-    description: ""
-  - name: "Python Data Analytics"
-    git_url: "/python_data_anlytics"
-    description: ""
-  - name: "Hadoop"
-    git_url: "/hadoop"
-    description: ""
-  - name: "Spark"
-    git_url: "/spark"
-    description: ""
-  - name: "Cloud/DevOps"
-    git_url: "/cloud_devops"
-    description: ""
+
 
 # List of personal or academic projects
 # Feel free to add more projects

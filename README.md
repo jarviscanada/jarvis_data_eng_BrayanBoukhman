@@ -4,11 +4,11 @@ I have a demonstrated history of accomplishments in full-stack development, empl
 
 ## Skills
 
-**Proficient:** Java, Linux/Bash, RDBMS/SQL, Agile/Scrum, Git, Docker
+**Proficient:** Java, Linux/Bash, RDBMS/SQL, Agile/Scrum, Git, Docker, sql, Spring Boot, Spring Framework, Hibernate, Gradle, Maven
 
-**Competent:** Spring Boot, Spring Framework, Hibernate, Gradle, Maven
+**Competent:** GraphQL, JavaScript, React, Redux, React Router
 
-**Familiar:** Amazon AWS, GraphQL, Selenium, JavaScript, React
+**Familiar:** Amazon AWS, Selenium, Amazon Lambda, Amazon RDS, Amazon S3 bucket
 
 ## Jarvis Projects
 
@@ -17,17 +17,9 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_BrayanBouk
 
 **Cluster Monitor** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_BrayanBoukhman/tree/master/linux_sql)]: I developed a system to document and store hardware specs and resource usage for a Linux cluster in PostgreSQL. I created an MVP for Jarvis Linux Cluster Administration, including scripts to gather hardware data, track server usage, and launch PostgreSQL and its docker container. This resulted in a successful functional MVP for the Jarvis Linux Cluster Administration.
 
+**SQL application** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_BrayanBoukhman/tree/master/sql)]: This SQL project, created by me solely for learning purposes, focuses on developing and demonstrating my SQL proficiency. It involves using various SQL keywords to address specific questions and scenarios, serving as a valuable tool for skill enhancement. The project's objectives include hands-on skill development, real-world applicability, problem-solving mastery, immediate feedback, and portfolio enrichment.
+
 **Core Java Apps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_BrayanBoukhman/tree/master/core_java)]: Not Started
-
-**Springboot App** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_BrayanBoukhman/tree/master/springboot)]: Not Started
-
-**Python Data Analytics** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_BrayanBoukhman/tree/master/python_data_anlytics)]: Not Started
-
-**Hadoop** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_BrayanBoukhman/tree/master/hadoop)]: Not Started
-
-**Spark** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_BrayanBoukhman/tree/master/spark)]: Not Started
-
-**Cloud/DevOps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_BrayanBoukhman/tree/master/cloud_devops)]: Not Started
 
 
 ## Highlighted Projects
