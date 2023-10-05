@@ -53,7 +53,7 @@ SELECT
         (
             SELECT
                 max(facid)
-            from
+            FROM
                 cd.facilities
         )+ 1,
         'Spa',
@@ -187,10 +187,10 @@ ORDER BY
     memfname;
 
 SELECT
-    mems.firstname as memfname,
-    mems.surname as memsname,
-    recs.firstname as recfname,
-    recs.surname as recsname
+    mems.firstname AS memfname,
+    mems.surname AS memsname,
+    recs.firstname AS recfname,
+    recs.surname AS recsname
 FROM
     cd.members mems
         LEFT OUTER JOIN cd.members recs on recs.memid = mems.recommendedby
@@ -199,10 +199,10 @@ ORDER BY
     memfname;
 
 SELECT
-    DISTINCT mems.firstname || ' ' || mems.surname as member,
+    DISTINCT mems.firstname || ' ' || mems.surname AS member,
              (
                  SELECT
-                     recs.firstname || ' ' || recs.surname as recommender
+                     recs.firstname || ' ' || recs.surname AS recommender
                  FROM
                      cd.members recs
                  WHERE

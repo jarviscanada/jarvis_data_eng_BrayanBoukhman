@@ -1,5 +1,5 @@
 # Introduction
-This SQL project, created by me solely for learning purposes, focuses on developing and demonstrating my SQL proficiency. It involves using various SQL keywords to address specific questions and scenarios, serving as a valuable tool for skill enhancement. The project's objectives include hands-on skill development, real-world applicability, problem-solving mastery, immediate feedback, and portfolio enrichment. It empowers me to advance my SQL skills for potential career opportunities in data analysis or related fields.
+This SQL project, created by me solely for learning purposes, focuses on developing and demonstrating my SQL proficiency. It involves using various SQL keywords to address specific questions and scenarios, serving as a valuable tool for skill enhancement.
 # SQL Queries
 
 ###### Table Setup (DDL)
@@ -66,7 +66,7 @@ SELECT
         (
             SELECT
                 max(facid)
-            from
+            FROM
                 cd.facilities
         )+ 1,
         'Spa',
@@ -120,7 +120,7 @@ DELETE FROM
 ```sql
 DELETE FROM 
   cd.members 
-where 
+WHERE 
   memid = 37;
 ```
 
@@ -134,7 +134,7 @@ SELECT
     monthlymaintenance
 FROM
     cd.facilities fac
-where
+WHERE
     (
         fac.membercost < fac.monthlymaintenance / 50
         )
@@ -223,8 +223,8 @@ SELECT
     f.name AS name
 FROM
     cd.bookings b
-        INNER JOIN cd.facilities f on b.facid = f.facid
-where
+        INNER JOIN cd.facilities f ON b.facid = f.facid
+WHERE
     b.starttime >= '2012-09-21'
   AND b.starttime < '2012-09-22'
   AND f.name LIKE '%Tennis%'
@@ -251,10 +251,10 @@ ORDER BY
 
 ```sql
 SELECT
-    mems.firstname as memfname,
-    mems.surname as memsname,
-    recs.firstname as recfname,
-    recs.surname as recsname
+    mems.firstname AS memfname,
+    mems.surname AS memsname,
+    recs.firstname AS recfname,
+    recs.surname AS recsname
 FROM
     cd.members mems
         LEFT OUTER JOIN cd.members recs on recs.memid = mems.recommendedby
@@ -267,10 +267,10 @@ ORDER BY
 
 ```sql
 SELECT
-    DISTINCT mems.firstname || ' ' || mems.surname as member,
+    DISTINCT mems.firstname || ' ' || mems.surname AS member,
              (
                  SELECT
-                     recs.firstname || ' ' || recs.surname as recommender
+                     recs.firstname || ' ' || recs.surname AS recommender
                  FROM
                      cd.members recs
                  WHERE
