@@ -47,11 +47,15 @@ public class JavaGrepImpl implements JavaGrep{
 
         if(fileList != null){
             for(File file : fileList) {
-                List<String> lines = readLines(file);
-                for(String line : lines) {
-                    if(containsPattern(line)){
-                        matchedLines.add(line);
+                try (BufferedReader bufferedReader = readLines(file)) {
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        if (containsPattern(line)) {
+                            matchedLines.add(line);
+                        }
                     }
+                } catch (IOException e) {
+                    logger.error("Error: Failed to read lines from " + file.getName(), e);
                 }
             }
         }
@@ -79,16 +83,8 @@ public class JavaGrepImpl implements JavaGrep{
     }
 
     @Override
-    public List<String> readLines(File inputFile) {
-
-        List<String> lines = new ArrayList<>();
-
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(inputFile))) {
-            lines.addAll(bufferedReader.lines().collect(Collectors.toList()));
-        } catch (IOException e) {
-            logger.error("Error: Failed to read lines", e);
-        }
-        return lines;
+    public BufferedReader readLines(File inputFile) throws FileNotFoundException {
+        return new BufferedReader(new FileReader(inputFile));
     }
 
     @Override
