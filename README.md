@@ -17,7 +17,7 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_BrayanBouk
 
 **Cluster Monitor** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_BrayanBoukhman/tree/master/linux_sql)]: I developed a system to document and store hardware specs and resource usage for a Linux cluster in PostgreSQL. I created an MVP for Jarvis Linux Cluster Administration, including scripts to gather hardware data, track server usage, and launch PostgreSQL and its docker container. This resulted in a successful functional MVP for the Jarvis Linux Cluster Administration.
 
-**SQL application** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_BrayanBoukhman/tree/master/sql)]: This SQL project, created by me solely for learning purposes, focuses on developing and demonstrating my SQL proficiency. It involves using various SQL keywords to address specific questions and scenarios, serving as a valuable tool for skill enhancement.
+**SQL application** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_BrayanBoukhman/tree/master/sql)]: This SQL project, created by me solely for learning purposes, focuses on developing and demonstrating my SQL proficiency. It involves using various SQL keywords to address specific questions and scenarios, serving as a valuable tool for skill enhancement. Additionally, it showcases my ability to design and implement complex database queries.
 
 **Core Java Apps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_BrayanBoukhman/tree/master/core_java)]: Not Started
 

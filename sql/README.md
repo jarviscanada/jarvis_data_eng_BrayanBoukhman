@@ -1,5 +1,5 @@
 # Introduction
-This SQL project, created by me solely for learning purposes, focuses on developing and demonstrating my SQL proficiency. It involves using various SQL keywords to address specific questions and scenarios, serving as a valuable tool for skill enhancement.
+This SQL project, created by me solely for learning purposes, focuses on developing and demonstrating my SQL proficiency. It involves using various SQL keywords to address specific questions and scenarios, serving as a valuable tool for skill enhancement. Additionally, it showcases my ability to design and implement complex database queries.
 # SQL Queries
 
 ###### Table Setup (DDL)
@@ -124,7 +124,7 @@ WHERE
   memid = 37;
 ```
 
-###### Question 7: Delete a member from the cd.members table
+###### Question 7: Control which rows are retrieved
 
 ```sql
 SELECT
