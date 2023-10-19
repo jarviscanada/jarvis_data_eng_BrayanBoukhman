@@ -21,7 +21,6 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_BrayanBouk
 
 **Grep app** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_BrayanBoukhman/tree/master/core_java)]: The Grep application, written in Java, emulates the functionality of the Linux grep command. This application scans files, identifies lines that match a given regular expression, and saves them to a file. It starts its search from a designated root directory, conducting a recursive search across all directories and files. Developed using IntelliJ IDE, Core Java, and Maven, this application is also deployed through Docker.
 
-
 ## Highlighted Projects
 **Image Processing Library** [[GitHub](https://github.com/bbrayan/Image_Processing_Library)]: I've developed an image processing library with a versatile toolkit, including 3x3 filter applications like edge detection, black pixel counting in connected regions, and extracting these regions as separate images. It also provides convenient image scaling options, whether for a single image or its corresponding areas, along with basic number recognition capabilities using Euclidean distance and feature vectors, making it a comprehensive solution for various image processing tasks.
 
