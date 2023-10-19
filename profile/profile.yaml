@@ -47,9 +47,9 @@ jarvis_projects:
   - name: "SQL application"
     git_url: "/sql"
     description: This SQL project, created by me solely for learning purposes, focuses on developing and demonstrating my SQL proficiency. It involves using various SQL keywords to address specific questions and scenarios, serving as a valuable tool for skill enhancement. Additionally, it showcases my ability to design and implement complex database queries.
-  - name: "Core Java Apps"
+  - name: "Grep app"
     git_url: "/core_java"
-    description: ""
+    description: "The Grep application, written in Java, emulates the functionality of the Linux grep command. This application scans files, identifies lines that match a given regular expression, and saves them to a file. It starts its search from a designated root directory, conducting a recursive search across all directories and files. Developed using IntelliJ IDE, Core Java, and Maven, this application is also deployed through Docker."
 
 
 # List of personal or academic projects
