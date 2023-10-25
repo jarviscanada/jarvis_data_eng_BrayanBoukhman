@@ -16,7 +16,7 @@ public abstract class CrudDAO<T, ID> {
      * @return The saved entity. Will never be null
      * @throws IllegalArgumentException - if id is null
      */
-    public abstract T save(T entity) throws IllegalArgumentException;
+    public abstract void save(T entity) throws IllegalArgumentException;
 
     /**
      * Retrieves an entity by its id

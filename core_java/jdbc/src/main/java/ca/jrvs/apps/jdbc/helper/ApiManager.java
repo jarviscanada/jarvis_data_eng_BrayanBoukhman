@@ -9,29 +9,16 @@ import okhttp3.Response;
 import java.io.IOException;
 
 
-public class QuoteHttpHelper {
+public class ApiManager {
 
-    private final ObjectMapper objectMapper;
-    private final OkHttpClient client;
-    private final String apiKey;
+    private final static ObjectMapper objectMapper = new ObjectMapper();
+    private final static OkHttpClient client = new OkHttpClient();
 
-    public QuoteHttpHelper(String apiKey) {
-        this.objectMapper = new ObjectMapper();
-        this.client = new OkHttpClient();
-        this.apiKey = apiKey;
-    }
-
-    /**
-     * Fetch latest quote data from Alpha Vantage endpoint
-     * @param symbol
-     * @return Quote with latest data
-     * @throws IllegalArgumentException - if no data was found for the given symbol
-     */
-    public QuoteDTO fetchQuoteInfo(String symbol) throws IllegalArgumentException {
+    public static QuoteDTO fetchQuoteInfo(String symbol) throws IllegalArgumentException {
         Request request = new Request.Builder()
                 .url("https://alpha-vantage.p.rapidapi.com/query?function=GLOBAL_QUOTE&symbol=" + symbol +"&datatype=json")
                 .get()
-                .addHeader("X-RapidAPI-Key", apiKey)
+                .addHeader("X-RapidAPI-Key", PropertyManager.getApiKey())
                 .addHeader("X-RapidAPI-Host", "alpha-vantage.p.rapidapi.com")
                 .build();
 

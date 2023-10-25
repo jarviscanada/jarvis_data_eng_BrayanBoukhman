@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
-import java.util.Date;
+import java.sql.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -46,4 +46,22 @@ public class QuoteDTO {
     private String changePercent;
 
     private Timestamp timestamp;
+
+    @Override
+    public String toString() {
+        return "Quote{" +
+                "id=" + id +
+                ", symbol='" + symbol + '\'' +
+                ", open=" + open +
+                ", high=" + high +
+                ", low=" + low +
+                ", price=" + price +
+                ", volume=" + volume +
+                ", latestTradingDay=" + latestTradingDay +
+                ", previousClose=" + previousClose +
+                ", change=" + change +
+                ", changePercent='" + changePercent + '\'' +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }
