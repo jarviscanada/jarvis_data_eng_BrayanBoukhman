@@ -59,7 +59,7 @@ public class QuoteDAO extends CrudDAO<QuoteDTO, Integer> {
                 if (generatedKeys.next()) {
                     return generatedKeys.getInt(1);
                 } else {
-                    throw new SQLException("Creating user failed, no ID obtained.");
+                    throw new SQLException("Creating Position failed, no ID obtained.");
                 }
             }
         } catch (SQLException e) {

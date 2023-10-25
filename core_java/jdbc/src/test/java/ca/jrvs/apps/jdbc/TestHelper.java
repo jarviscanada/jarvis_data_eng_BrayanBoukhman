@@ -33,18 +33,16 @@ public class TestHelper {
         quoteDTO.setVolume(random.nextInt(50));
         quoteDTO.setLatestTradingDay(new Date(System.currentTimeMillis()));
         quoteDTO.setPreviousClose(Double.parseDouble(df.format(random.nextDouble() * 40.0 + 30.0)));
-        quoteDTO.setChange(quoteDTO.getOpen() - quoteDTO.getPreviousClose());
-        quoteDTO.setChangePercent(String.valueOf(quoteDTO.getChange() * 100));
+        quoteDTO.setChange(Double.parseDouble(df.format((quoteDTO.getPreviousClose() - quoteDTO.getOpen()) / quoteDTO.getPreviousClose())));
+        quoteDTO.setChangePercent(df.format(quoteDTO.getChange() * 100) + "%");
         quoteDTO.setTimestamp(Timestamp.from(Instant.now()));
 
         return quoteDTO;
     }
     public static QuoteDTO newQuoteDTO(String symbol){
-
         QuoteDTO quoteDTO = newQuoteDTO();
 
         quoteDTO.setSymbol(symbol);
-
 
         return quoteDTO;
     }
@@ -58,5 +56,13 @@ public class TestHelper {
         positionDTO.setValuePaid(quoteDTO.getPrice());
 
         return positionDTO;
+    }
+
+    public static PositionDTO newPositionDTO(){
+        return newPositionDTO(newQuoteDTO());
+    }
+
+    public static PositionDTO newPositionDTO(String symbol){
+        return newPositionDTO(newQuoteDTO(symbol));
     }
 }

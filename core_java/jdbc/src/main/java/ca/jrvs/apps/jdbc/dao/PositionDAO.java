@@ -2,23 +2,18 @@ package ca.jrvs.apps.jdbc.dao;
 
 import ca.jrvs.apps.jdbc.dto.PositionDTO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class PositionDAO extends CrudDAO<PositionDTO, Integer> {
-    private static final String SAVE = "INSERT INTO stock_quote_app.position " +
-            "(symbol, number_of_shares, value_paid) " +
-            "VALUES (?, ?, ?)";
+    private static final String INSERT = "INSERT INTO stock_quote_app.position (symbol, number_of_shares, value_paid) VALUES (?, ?, ?)";
     private static final String FIND_BY_ID = "SELECT * FROM stock_quote_app.position WHERE id = ?";
     private static final String FIND_ALL_BY_SYMBOL = "SELECT * FROM stock_quote_app.position WHERE symbol = ?";
     private static final String FIND_ALL = "SELECT * FROM stock_quote_app.position";
     private static final String DELETE = "DELETE FROM stock_quote_app.position WHERE id = ?";
-    private static final String DELETE_ALL = "TRUNCATE TABLE stock_quote_app.position CASCADE";
+    private static final String DELETE_ALL = "DELETE FROM stock_quote_app.position;";
     public PositionDAO(Connection connection) {
         super(connection);
     }
@@ -27,7 +22,7 @@ public class PositionDAO extends CrudDAO<PositionDTO, Integer> {
     public Integer save(PositionDTO entity) throws IllegalArgumentException {
         if(entity == null) throw new IllegalArgumentException();
 
-        try (PreparedStatement statement = this.connection.prepareStatement(SAVE)) {
+        try (PreparedStatement statement = this.connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, entity.getSymbol());
             statement.setInt(2, entity.getNumOfShares());
             statement.setDouble(3, entity.getValuePaid());
@@ -36,7 +31,7 @@ public class PositionDAO extends CrudDAO<PositionDTO, Integer> {
                 if (generatedKeys.next()) {
                     return generatedKeys.getInt(1);
                 } else {
-                    throw new SQLException("Creating user failed, no ID obtained.");
+                    throw new SQLException("Creating Position failed, no ID obtained.");
                 }
             }
         } catch (SQLException e) {
