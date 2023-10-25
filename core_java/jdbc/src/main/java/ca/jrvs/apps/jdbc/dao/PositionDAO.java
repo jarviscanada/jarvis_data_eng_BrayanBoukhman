@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class PositionDAO extends CrudDAO<PositionDTO, Long> {
+public class PositionDAO extends CrudDAO<PositionDTO, Integer> {
     private static final String SAVE = "INSERT INTO stock_quote_app.position " +
             "(symbol, number_of_shares, value_paid) " +
             "VALUES (?, ?, ?)";
@@ -24,7 +24,7 @@ public class PositionDAO extends CrudDAO<PositionDTO, Long> {
     }
 
     @Override
-    public void save(PositionDTO entity) throws IllegalArgumentException {
+    public Integer save(PositionDTO entity) throws IllegalArgumentException {
         if(entity == null) throw new IllegalArgumentException();
 
         try (PreparedStatement statement = this.connection.prepareStatement(SAVE)) {
@@ -32,13 +32,20 @@ public class PositionDAO extends CrudDAO<PositionDTO, Long> {
             statement.setInt(2, entity.getNumOfShares());
             statement.setDouble(3, entity.getValuePaid());
             statement.executeUpdate();
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return generatedKeys.getInt(1);
+                } else {
+                    throw new SQLException("Creating user failed, no ID obtained.");
+                }
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public Optional<PositionDTO> findById(Long id) throws IllegalArgumentException {
+    public Optional<PositionDTO> findById(Integer id) throws IllegalArgumentException {
         if(id == null) throw new IllegalArgumentException();
         try(PreparedStatement statement = this.connection.prepareStatement(FIND_BY_ID)){
             statement.setLong(1, id);
@@ -102,7 +109,7 @@ public class PositionDAO extends CrudDAO<PositionDTO, Long> {
     }
 
     @Override
-    public void deleteById(Long id) throws IllegalArgumentException {
+    public void deleteById(Integer id) throws IllegalArgumentException {
         if(id == null) throw new IllegalArgumentException();
         try(PreparedStatement statement = this.connection.prepareStatement(DELETE)){
             statement.setLong(1, id);

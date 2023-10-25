@@ -26,13 +26,13 @@ public class TestHelper {
         QuoteDTO quoteDTO = new QuoteDTO();
 
         quoteDTO.setSymbol(symbols[random.nextInt(53)]);
-        quoteDTO.setOpen(Double.parseDouble(df.format(random.nextDouble( 40.0) + 30.0)));
-        quoteDTO.setHigh(Double.parseDouble(df.format(random.nextDouble( 50.0) + 50.0)));
-        quoteDTO.setLow(Double.parseDouble(df.format(random.nextDouble( 40.0))));
-        quoteDTO.setPrice(Double.parseDouble(df.format(random.nextDouble( 70.0) + 10.0)));
+        quoteDTO.setOpen(Double.parseDouble(df.format(random.nextDouble() * 40.0 + 30.0)));
+        quoteDTO.setHigh(Double.parseDouble(df.format(random.nextDouble() * 50.0 + 50.0)));
+        quoteDTO.setLow(Double.parseDouble(df.format(random.nextDouble() * 40.0)));
+        quoteDTO.setPrice(Double.parseDouble(df.format(random.nextDouble() * 70.0 + 10.0)));
         quoteDTO.setVolume(random.nextInt(50));
         quoteDTO.setLatestTradingDay(new Date(System.currentTimeMillis()));
-        quoteDTO.setPreviousClose(Double.parseDouble(df.format(random.nextDouble( 40.0) + 30.0)));
+        quoteDTO.setPreviousClose(Double.parseDouble(df.format(random.nextDouble() * 40.0 + 30.0)));
         quoteDTO.setChange(quoteDTO.getOpen() - quoteDTO.getPreviousClose());
         quoteDTO.setChangePercent(String.valueOf(quoteDTO.getChange() * 100));
         quoteDTO.setTimestamp(Timestamp.from(Instant.now()));
@@ -40,23 +40,11 @@ public class TestHelper {
         return quoteDTO;
     }
     public static QuoteDTO newQuoteDTO(String symbol){
-        Random random = new Random();
 
-        DecimalFormat df = new DecimalFormat("#.00");
-
-        QuoteDTO quoteDTO = new QuoteDTO();
+        QuoteDTO quoteDTO = newQuoteDTO();
 
         quoteDTO.setSymbol(symbol);
-        quoteDTO.setOpen(Double.parseDouble(df.format(random.nextDouble( 40.0) + 30.0)));
-        quoteDTO.setHigh(Double.parseDouble(df.format(random.nextDouble( 50.0) + 50.0)));
-        quoteDTO.setLow(Double.parseDouble(df.format(random.nextDouble( 40.0))));
-        quoteDTO.setPrice(Double.parseDouble(df.format(random.nextDouble( 70.0) + 10.0)));
-        quoteDTO.setVolume(random.nextInt(50));
-        quoteDTO.setLatestTradingDay(new Date(System.currentTimeMillis()));
-        quoteDTO.setPreviousClose(Double.parseDouble(df.format(random.nextDouble( 40.0) + 30.0)));
-        quoteDTO.setChange(quoteDTO.getOpen() - quoteDTO.getPreviousClose());
-        quoteDTO.setChangePercent(String.valueOf(quoteDTO.getChange() * 100));
-        quoteDTO.setTimestamp(Timestamp.from(Instant.now()));
+
 
         return quoteDTO;
     }

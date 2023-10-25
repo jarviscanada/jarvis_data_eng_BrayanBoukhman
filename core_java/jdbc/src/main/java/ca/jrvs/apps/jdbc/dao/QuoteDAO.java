@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class QuoteDAO extends CrudDAO<QuoteDTO, Long> {
+public class QuoteDAO extends CrudDAO<QuoteDTO, Integer> {
     public QuoteDAO(Connection connection) {
         super(connection);
     }
@@ -34,13 +34,13 @@ public class QuoteDAO extends CrudDAO<QuoteDTO, Long> {
     private static final String DELETE_ALL = "DELETE FROM stock_quote_app.quote;";
 
     @Override
-    public void save(QuoteDTO entity) throws IllegalArgumentException {
+    public Integer save(QuoteDTO entity) throws IllegalArgumentException {
         Optional<QuoteDTO> optional = findBySymbol(entity.getSymbol());
 
         String prepStatement = optional.isPresent() ? UPDATE : INSERT;
 
         //if it exists then update it
-        try(PreparedStatement statement = this.connection.prepareStatement(prepStatement)){
+        try(PreparedStatement statement = this.connection.prepareStatement(prepStatement, Statement.RETURN_GENERATED_KEYS)){
             statement.setString(1, entity.getSymbol());
             statement.setDouble(2, entity.getOpen());
             statement.setDouble(3, entity.getHigh());
@@ -54,13 +54,21 @@ public class QuoteDAO extends CrudDAO<QuoteDTO, Long> {
             statement.setTimestamp(11, entity.getTimestamp());
             if(optional.isPresent()){statement.setLong(12, optional.get().getId());}
             statement.executeUpdate();
+
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return generatedKeys.getInt(1);
+                } else {
+                    throw new SQLException("Creating user failed, no ID obtained.");
+                }
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public Optional<QuoteDTO> findById(Long id) throws IllegalArgumentException {
+    public Optional<QuoteDTO> findById(Integer id) throws IllegalArgumentException {
         if(id == null) throw new IllegalArgumentException();
         try(PreparedStatement statement = this.connection.prepareStatement(GET_ONE_BY_ID)){
             statement.setLong(1, id);
@@ -103,7 +111,7 @@ public class QuoteDAO extends CrudDAO<QuoteDTO, Long> {
     }
 
     @Override
-    public void deleteById(Long id) throws IllegalArgumentException {
+    public void deleteById(Integer id) throws IllegalArgumentException {
         if(id == null) throw new IllegalArgumentException();
         try(PreparedStatement statement = this.connection.prepareStatement(DELETE)){
             statement.setLong(1, id);
