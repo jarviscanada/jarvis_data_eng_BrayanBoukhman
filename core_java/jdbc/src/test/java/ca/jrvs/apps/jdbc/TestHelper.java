@@ -1,7 +1,7 @@
 package ca.jrvs.apps.jdbc;
 
-import ca.jrvs.apps.jdbc.dto.PositionDTO;
-import ca.jrvs.apps.jdbc.dto.QuoteDTO;
+import ca.jrvs.apps.jdbc.dto.Position;
+import ca.jrvs.apps.jdbc.dto.Quote;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -18,51 +18,51 @@ public class TestHelper {
             "AXP", "BA", "MCD", "KO", "PEP", "DIS", "NFLX", "NKE",
             "GE", "GM", "F", "UBER", "LYFT", "BAC", "GS", "WFC",
             "JNJ", "PFE", "MRK", "ABBV"};
-    public static QuoteDTO newQuoteDTO(){
+    public static Quote newQuoteDTO(){
         Random random = new Random();
 
         DecimalFormat df = new DecimalFormat("#.00");
 
-        QuoteDTO quoteDTO = new QuoteDTO();
+        Quote quote = new Quote();
 
-        quoteDTO.setSymbol(symbols[random.nextInt(53)]);
-        quoteDTO.setOpen(Double.parseDouble(df.format(random.nextDouble() * 40.0 + 30.0)));
-        quoteDTO.setHigh(Double.parseDouble(df.format(random.nextDouble() * 50.0 + 50.0)));
-        quoteDTO.setLow(Double.parseDouble(df.format(random.nextDouble() * 40.0)));
-        quoteDTO.setPrice(Double.parseDouble(df.format(random.nextDouble() * 70.0 + 10.0)));
-        quoteDTO.setVolume(random.nextInt(50));
-        quoteDTO.setLatestTradingDay(new Date(System.currentTimeMillis()));
-        quoteDTO.setPreviousClose(Double.parseDouble(df.format(random.nextDouble() * 40.0 + 30.0)));
-        quoteDTO.setChange(Double.parseDouble(df.format((quoteDTO.getPreviousClose() - quoteDTO.getOpen()) / quoteDTO.getPreviousClose())));
-        quoteDTO.setChangePercent(df.format(quoteDTO.getChange() * 100) + "%");
-        quoteDTO.setTimestamp(Timestamp.from(Instant.now()));
+        quote.setSymbol(symbols[random.nextInt(53)]);
+        quote.setOpen(Double.parseDouble(df.format(random.nextDouble() * 40.0 + 30.0)));
+        quote.setHigh(Double.parseDouble(df.format(random.nextDouble() * 50.0 + 50.0)));
+        quote.setLow(Double.parseDouble(df.format(random.nextDouble() * 40.0)));
+        quote.setPrice(Double.parseDouble(df.format(random.nextDouble() * 70.0 + 10.0)));
+        quote.setVolume(random.nextInt(50));
+        quote.setLatestTradingDay(new Date(System.currentTimeMillis()));
+        quote.setPreviousClose(Double.parseDouble(df.format(random.nextDouble() * 40.0 + 30.0)));
+        quote.setChange(Double.parseDouble(df.format((quote.getPreviousClose() - quote.getOpen()) / quote.getPreviousClose())));
+        quote.setChangePercent(df.format(quote.getChange() * 100) + "%");
+        quote.setTimestamp(Timestamp.from(Instant.now()));
 
-        return quoteDTO;
+        return quote;
     }
-    public static QuoteDTO newQuoteDTO(String symbol){
-        QuoteDTO quoteDTO = newQuoteDTO();
+    public static Quote newQuoteDTO(String symbol){
+        Quote quote = newQuoteDTO();
 
-        quoteDTO.setSymbol(symbol);
+        quote.setSymbol(symbol);
 
-        return quoteDTO;
-    }
-
-    public static PositionDTO newPositionDTO(QuoteDTO quoteDTO){
-
-        PositionDTO positionDTO = new PositionDTO();
-
-        positionDTO.setSymbol(quoteDTO.getSymbol());
-        positionDTO.setNumOfShares(quoteDTO.getVolume());
-        positionDTO.setValuePaid(quoteDTO.getPrice());
-
-        return positionDTO;
+        return quote;
     }
 
-    public static PositionDTO newPositionDTO(){
+    public static Position newPositionDTO(Quote quote){
+
+        Position position = new Position();
+
+        position.setSymbol(quote.getSymbol());
+        position.setNumOfShares(quote.getVolume());
+        position.setValuePaid(quote.getPrice());
+
+        return position;
+    }
+
+    public static Position newPositionDTO(){
         return newPositionDTO(newQuoteDTO());
     }
 
-    public static PositionDTO newPositionDTO(String symbol){
+    public static Position newPositionDTO(String symbol){
         return newPositionDTO(newQuoteDTO(symbol));
     }
 }

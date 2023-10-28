@@ -1,13 +1,13 @@
 package ca.jrvs.apps.jdbc.dao;
 
-import ca.jrvs.apps.jdbc.dto.QuoteDTO;
+import ca.jrvs.apps.jdbc.dto.Quote;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class QuoteDAO extends CrudDAO<QuoteDTO, Integer> {
+public class QuoteDAO extends CrudDAO<Quote, Integer> {
     public QuoteDAO(Connection connection) {
         super(connection);
     }
@@ -34,8 +34,8 @@ public class QuoteDAO extends CrudDAO<QuoteDTO, Integer> {
     private static final String DELETE_ALL = "DELETE FROM stock_quote_app.quote;";
 
     @Override
-    public Integer save(QuoteDTO entity) throws IllegalArgumentException {
-        Optional<QuoteDTO> optional = findBySymbol(entity.getSymbol());
+    public Integer save(Quote entity) throws IllegalArgumentException {
+        Optional<Quote> optional = findBySymbol(entity.getSymbol());
 
         String prepStatement = optional.isPresent() ? UPDATE : INSERT;
 
@@ -68,7 +68,7 @@ public class QuoteDAO extends CrudDAO<QuoteDTO, Integer> {
     }
 
     @Override
-    public Optional<QuoteDTO> findById(Integer id) throws IllegalArgumentException {
+    public Optional<Quote> findById(Integer id) throws IllegalArgumentException {
         if(id == null) throw new IllegalArgumentException();
         try(PreparedStatement statement = this.connection.prepareStatement(GET_ONE_BY_ID)){
             statement.setLong(1, id);
@@ -82,7 +82,7 @@ public class QuoteDAO extends CrudDAO<QuoteDTO, Integer> {
         return Optional.empty();
     }
 
-    public Optional<QuoteDTO> findBySymbol(String symbol) throws IllegalArgumentException {
+    public Optional<Quote> findBySymbol(String symbol) throws IllegalArgumentException {
         if(symbol == null) throw new IllegalArgumentException();
         try(PreparedStatement statement = this.connection.prepareStatement(GET_ONE_BY_SYMBOL)){
             statement.setString(1, symbol);
@@ -97,8 +97,8 @@ public class QuoteDAO extends CrudDAO<QuoteDTO, Integer> {
     }
 
     @Override
-    public List<QuoteDTO> findAll() {
-        List<QuoteDTO> list = new ArrayList<>();
+    public List<Quote> findAll() {
+        List<Quote> list = new ArrayList<>();
         try(PreparedStatement statement = this.connection.prepareStatement(GET_ALL)){
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
@@ -129,21 +129,21 @@ public class QuoteDAO extends CrudDAO<QuoteDTO, Integer> {
             throw new RuntimeException(e);
         }
     }
-    public QuoteDTO resultSetToQuoteDTO(ResultSet rs) throws SQLException {
-        QuoteDTO quoteDTO = new QuoteDTO();
-        quoteDTO.setId(rs.getInt("id"));
-        quoteDTO.setSymbol(rs.getString("symbol"));
-        quoteDTO.setOpen(rs.getDouble("open"));
-        quoteDTO.setHigh(rs.getDouble("high"));
-        quoteDTO.setLow(rs.getDouble("low"));
-        quoteDTO.setPrice(rs.getDouble("price"));
-        quoteDTO.setVolume(rs.getInt("volume"));
-        quoteDTO.setLatestTradingDay(rs.getDate("latest_trading_day"));
-        quoteDTO.setPreviousClose(rs.getDouble("previous_close"));
-        quoteDTO.setChange(rs.getDouble("change"));
-        quoteDTO.setChangePercent(rs.getString("change_percent"));
-        quoteDTO.setTimestamp(rs.getTimestamp("timestamp"));
+    public Quote resultSetToQuoteDTO(ResultSet rs) throws SQLException {
+        Quote quote = new Quote();
+        quote.setId(rs.getInt("id"));
+        quote.setSymbol(rs.getString("symbol"));
+        quote.setOpen(rs.getDouble("open"));
+        quote.setHigh(rs.getDouble("high"));
+        quote.setLow(rs.getDouble("low"));
+        quote.setPrice(rs.getDouble("price"));
+        quote.setVolume(rs.getInt("volume"));
+        quote.setLatestTradingDay(rs.getDate("latest_trading_day"));
+        quote.setPreviousClose(rs.getDouble("previous_close"));
+        quote.setChange(rs.getDouble("change"));
+        quote.setChangePercent(rs.getString("change_percent"));
+        quote.setTimestamp(rs.getTimestamp("timestamp"));
 
-        return quoteDTO;
+        return quote;
     }
 }

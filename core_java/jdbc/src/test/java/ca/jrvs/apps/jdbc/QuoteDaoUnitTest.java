@@ -2,7 +2,7 @@ package ca.jrvs.apps.jdbc;
 
 import ca.jrvs.apps.jdbc.dao.PositionDAO;
 import ca.jrvs.apps.jdbc.dao.QuoteDAO;
-import ca.jrvs.apps.jdbc.dto.QuoteDTO;
+import ca.jrvs.apps.jdbc.dto.Quote;
 import ca.jrvs.apps.jdbc.helper.ApiManager;
 import ca.jrvs.apps.jdbc.helper.DatabaseConnectionManager;
 import org.junit.After;
@@ -11,8 +11,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
 import org.mockito.ArgumentMatchers;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
@@ -41,6 +39,7 @@ public class QuoteDaoUnitTest {
         }
         positionDAO.deleteAll();
         quoteDAO.deleteAll();
+
         mockedApiManager = Mockito.mockStatic(ApiManager.class);
         mockedApiManager.when(() -> ApiManager.fetchQuoteInfo(ArgumentMatchers.anyString())).thenAnswer(invocation -> {
             String symbol = invocation.getArgument(0);
@@ -61,12 +60,12 @@ public class QuoteDaoUnitTest {
     @Test
     public void testSave() {
         // Create a test QuoteDTO and save it.
-        QuoteDTO testQuote = ApiManager.fetchQuoteInfo("MSFT");
+        Quote testQuote = ApiManager.fetchQuoteInfo("MSFT");
         assert testQuote != null;
         int testID = quoteDAO.save(testQuote);
 
         // Use quoteDAO.findById() to retrieve the saved quote by its ID.
-        Optional<QuoteDTO> retrievedQuote = quoteDAO.findById(testID);
+        Optional<Quote> retrievedQuote = quoteDAO.findById(testID);
         assertTrue(retrievedQuote.isPresent());
         assertEquals(retrievedQuote.get().getId(), testID);
     }
@@ -74,12 +73,12 @@ public class QuoteDaoUnitTest {
     @Test
     public void testFindById() {
         // Create a test QuoteDTO and save it.
-        QuoteDTO testQuote = ApiManager.fetchQuoteInfo("AAPL");
+        Quote testQuote = ApiManager.fetchQuoteInfo("AAPL");
         assert testQuote != null;
         int testID = quoteDAO.save(testQuote);
 
         // Use quoteDAO.findById() to retrieve the saved quote by its ID.
-        Optional<QuoteDTO> retrievedQuote = quoteDAO.findById(testID);
+        Optional<Quote> retrievedQuote = quoteDAO.findById(testID);
         assertTrue(retrievedQuote.isPresent());
         assertEquals(retrievedQuote.get().getId(), testID);
     }
@@ -87,12 +86,12 @@ public class QuoteDaoUnitTest {
     @Test
     public void testFindBySymbol() {
         // Create a test QuoteDTO and save it.
-        QuoteDTO testQuote = ApiManager.fetchQuoteInfo("GOOGL");
+        Quote testQuote = ApiManager.fetchQuoteInfo("GOOGL");
         assert testQuote != null;
         int testID = quoteDAO.save(testQuote);
 
         // Use quoteDAO.findBySymbol() to retrieve the saved quote by its symbol.
-        Optional<QuoteDTO> retrievedQuote = quoteDAO.findBySymbol(testQuote.getSymbol());
+        Optional<Quote> retrievedQuote = quoteDAO.findBySymbol(testQuote.getSymbol());
         assertTrue(retrievedQuote.isPresent());
         assertEquals(retrievedQuote.get().getId(), testID);
     }
@@ -111,7 +110,7 @@ public class QuoteDaoUnitTest {
         quoteDAO.save(Objects.requireNonNull(ApiManager.fetchQuoteInfo("PFE")));
 
         // Use quoteDAO.findAll() to retrieve all quotes from the database.
-        List<QuoteDTO> allQuotes = quoteDAO.findAll();
+        List<Quote> allQuotes = quoteDAO.findAll();
 
         // Add assertions to verify the contents of allQuotes.
         assertEquals(4, allQuotes.size());
@@ -120,7 +119,7 @@ public class QuoteDaoUnitTest {
     @Test
     public void testDeleteById() {
         // Create a test QuoteDTO and save it.
-        QuoteDTO testQuote = ApiManager.fetchQuoteInfo("GOOGL");
+        Quote testQuote = ApiManager.fetchQuoteInfo("GOOGL");
         assert testQuote != null;
         int testID = quoteDAO.save(testQuote);
 
@@ -128,7 +127,7 @@ public class QuoteDaoUnitTest {
         quoteDAO.deleteById(testID);
 
         // Verify that the quote has been deleted by trying to retrieve it again.
-        Optional<QuoteDTO> deletedQuote = quoteDAO.findById(testID);
+        Optional<Quote> deletedQuote = quoteDAO.findById(testID);
         // Add assertions to check that deletedQuote is empty.
         assertTrue(deletedQuote.isEmpty());
     }
@@ -143,7 +142,7 @@ public class QuoteDaoUnitTest {
         quoteDAO.deleteAll();
 
         // Verify that the quotes have been deleted by checking if findAll() returns an empty list
-        List<QuoteDTO> allQuotes = quoteDAO.findAll();
+        List<Quote> allQuotes = quoteDAO.findAll();
 
         // Add an assertion to check that allQuotes is empty
         assertTrue(allQuotes.isEmpty());

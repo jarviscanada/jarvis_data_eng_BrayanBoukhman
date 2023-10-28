@@ -11,7 +11,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class QuoteDTO {
+public class Quote {
 
     private int id;
 

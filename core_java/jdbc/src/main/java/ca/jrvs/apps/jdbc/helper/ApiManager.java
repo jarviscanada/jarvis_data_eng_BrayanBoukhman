@@ -1,6 +1,6 @@
 package ca.jrvs.apps.jdbc.helper;
 import ca.jrvs.apps.jdbc.dto.QuoteApiResponseDTO;
-import ca.jrvs.apps.jdbc.dto.QuoteDTO;
+import ca.jrvs.apps.jdbc.dto.Quote;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -14,7 +14,7 @@ public class ApiManager {
     private final static ObjectMapper objectMapper = new ObjectMapper();
     private final static OkHttpClient client = new OkHttpClient();
 
-    public static QuoteDTO fetchQuoteInfo(String symbol) throws IllegalArgumentException {
+    public static Quote fetchQuoteInfo(String symbol) throws IllegalArgumentException {
         Request request = new Request.Builder()
                 .url("https://alpha-vantage.p.rapidapi.com/query?function=GLOBAL_QUOTE&symbol=" + symbol +"&datatype=json")
                 .get()
@@ -27,7 +27,7 @@ public class ApiManager {
             Response response = client.newCall(request).execute();
             if(response.body() != null) {
                 QuoteApiResponseDTO quoteApiResponseDTO = objectMapper.readValue(response.body().string(), QuoteApiResponseDTO.class);
-                return quoteApiResponseDTO.getQuoteDTO();
+                return quoteApiResponseDTO.getQuote();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

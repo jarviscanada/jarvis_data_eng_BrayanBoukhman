@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class PositionDTO {
+public class Position {
     private int id;
     private String symbol;
     private int numOfShares;

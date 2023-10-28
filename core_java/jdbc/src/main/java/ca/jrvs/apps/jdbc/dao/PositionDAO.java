@@ -1,13 +1,13 @@
 package ca.jrvs.apps.jdbc.dao;
 
-import ca.jrvs.apps.jdbc.dto.PositionDTO;
+import ca.jrvs.apps.jdbc.dto.Position;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class PositionDAO extends CrudDAO<PositionDTO, Integer> {
+public class PositionDAO extends CrudDAO<Position, Integer> {
     private static final String INSERT = "INSERT INTO stock_quote_app.position (symbol, number_of_shares, value_paid) VALUES (?, ?, ?)";
     private static final String FIND_BY_ID = "SELECT * FROM stock_quote_app.position WHERE id = ?";
     private static final String FIND_ALL_BY_SYMBOL = "SELECT * FROM stock_quote_app.position WHERE symbol = ?";
@@ -19,7 +19,7 @@ public class PositionDAO extends CrudDAO<PositionDTO, Integer> {
     }
 
     @Override
-    public Integer save(PositionDTO entity) throws IllegalArgumentException {
+    public Integer save(Position entity) throws IllegalArgumentException {
         if(entity == null) throw new IllegalArgumentException();
 
         try (PreparedStatement statement = this.connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
@@ -40,13 +40,13 @@ public class PositionDAO extends CrudDAO<PositionDTO, Integer> {
     }
 
     @Override
-    public Optional<PositionDTO> findById(Integer id) throws IllegalArgumentException {
+    public Optional<Position> findById(Integer id) throws IllegalArgumentException {
         if(id == null) throw new IllegalArgumentException();
         try(PreparedStatement statement = this.connection.prepareStatement(FIND_BY_ID)){
             statement.setLong(1, id);
             ResultSet rs = statement.executeQuery();
             if(rs.next()){
-                PositionDTO position = new PositionDTO();
+                Position position = new Position();
 
                 position.setId(rs.getInt(1));
                 position.setSymbol(rs.getString(2));
@@ -61,16 +61,16 @@ public class PositionDAO extends CrudDAO<PositionDTO, Integer> {
         return Optional.empty();
     }
 
-    public Iterable<PositionDTO> findByAllSymbol(String symbol) throws IllegalArgumentException {
+    public Iterable<Position> findByAllSymbol(String symbol) throws IllegalArgumentException {
         if(symbol == null) throw new IllegalArgumentException();
 
-        List<PositionDTO> positions = new ArrayList<>();
+        List<Position> positions = new ArrayList<>();
 
         try (PreparedStatement statement = this.connection.prepareStatement(FIND_ALL_BY_SYMBOL)) {
             statement.setString(1, symbol);
             ResultSet rs = statement.executeQuery();
             while(rs.next()) {
-                PositionDTO position = new PositionDTO();
+                Position position = new Position();
 
                 position.setId(rs.getInt(1));
                 position.setSymbol(rs.getString(2));
@@ -85,12 +85,12 @@ public class PositionDAO extends CrudDAO<PositionDTO, Integer> {
     }
 
     @Override
-    public Iterable<PositionDTO> findAll() {
-        List<PositionDTO> positions = new ArrayList<>();
+    public Iterable<Position> findAll() {
+        List<Position> positions = new ArrayList<>();
         try (PreparedStatement statement = this.connection.prepareStatement(FIND_ALL)) {
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-                PositionDTO position = new PositionDTO();
+                Position position = new Position();
                 position.setId(rs.getInt(1));
                 position.setSymbol(rs.getString(2));
                 position.setNumOfShares(rs.getInt(3));

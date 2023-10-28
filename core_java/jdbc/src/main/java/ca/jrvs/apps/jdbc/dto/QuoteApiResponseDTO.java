@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 @Data
 public class QuoteApiResponseDTO {
     @JsonProperty("Global Quote")
-    private QuoteDTO quoteDTO;
+    private Quote quote;
 }
