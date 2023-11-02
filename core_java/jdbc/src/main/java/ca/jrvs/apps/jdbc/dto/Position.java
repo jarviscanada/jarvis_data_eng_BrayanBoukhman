@@ -12,6 +12,13 @@ public class Position {
     private String symbol;
     private int numOfShares;
     private double valuePaid;
+
+    public Position(String symbol, int numOfShares, double valuePaid) {
+        this.symbol = symbol;
+        this.numOfShares = numOfShares;
+        this.valuePaid = valuePaid;
+    }
+
     @Override
     public String toString() {
         return "Position{" +
