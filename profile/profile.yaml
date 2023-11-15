@@ -50,7 +50,9 @@ jarvis_projects:
   - name: "Grep app"
     git_url: "/core_java"
     description: "The Grep application, written in Java, emulates the functionality of the Linux grep command. This application scans files, identifies lines that match a given regular expression, and saves them to a file. It starts its search from a designated root directory, conducting a recursive search across all directories and files. Developed using IntelliJ IDE, Core Java, and Maven, this application is also deployed through Docker."
-
+  - name: "Stock Quote App"
+    git_url: "/core_java"
+    description: "This application serves as a trading platform for buying and selling assets. It is built using Java and relies on JDBC for database connectivity. The data is stored in a PostgreSQL (PSQL) database, and Maven (MVN) is used for managing the project's build and dependencies. Users can perform buy and sell transactions through the platform, but it does not retain a history of sold positions, focusing solely on trading functionality."
 
 # List of personal or academic projects
 # Feel free to add more projects
