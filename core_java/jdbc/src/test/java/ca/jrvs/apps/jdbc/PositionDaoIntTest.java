@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class PositionDaoUnitTest {
+public class PositionDaoIntTest {
     private PositionDAO positionDAO;
     private QuoteDAO quoteDAO;
     private Connection connection;
