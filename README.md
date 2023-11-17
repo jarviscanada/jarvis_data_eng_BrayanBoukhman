@@ -21,6 +21,9 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_BrayanBouk
 
 **Grep app** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_BrayanBoukhman/tree/master/core_java)]: The Grep application, written in Java, emulates the functionality of the Linux grep command. This application scans files, identifies lines that match a given regular expression, and saves them to a file. It starts its search from a designated root directory, conducting a recursive search across all directories and files. Developed using IntelliJ IDE, Core Java, and Maven, this application is also deployed through Docker.
 
+**Stock Quote App** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_BrayanBoukhman/tree/master/core_java)]: This application serves as a trading platform for buying and selling assets. It is built using Java and relies on JDBC for database connectivity. The data is stored in a PostgreSQL (PSQL) database, and Maven (MVN) is used for managing the project's build and dependencies. Users can perform buy and sell transactions through the platform, but it does not retain a history of sold positions, focusing solely on trading functionality.
+
+
 ## Highlighted Projects
 **Image Processing Library** [[GitHub](https://github.com/bbrayan/Image_Processing_Library)]: I've developed an image processing library with a versatile toolkit, including 3x3 filter applications like edge detection, black pixel counting in connected regions, and extracting these regions as separate images. It also provides convenient image scaling options, whether for a single image or its corresponding areas, along with basic number recognition capabilities using Euclidean distance and feature vectors, making it a comprehensive solution for various image processing tasks.
 
