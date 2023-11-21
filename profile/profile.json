@@ -1,0 +1,122 @@
+{
+  "education": [
+    {
+      "awards_achievements": [
+        "Participated in a software development club for web development.",
+        "Volunteered as campus patrol."
+      ],
+      "degree": "Bachelor of Computer Science",
+      "department": "Physics and Computer Science",
+      "duration": "2016 - 2020",
+      "school_name": "Wilfrid Laurier University"
+    }
+  ],
+  "github_repo_root_url": "https://github.com/jarviscanada/jarvis_data_eng_BrayanBoukhman",
+  "highlighted_projects": [
+    {
+      "description": "I've developed an image processing library with a versatile toolkit, including 3x3 filter applications like edge detection, black pixel counting in connected regions, and extracting these regions as separate images. It also provides convenient image scaling options, whether for a single image or its corresponding areas, along with basic number recognition capabilities using Euclidean distance and feature vectors, making it a comprehensive solution for various image processing tasks.",
+      "git_url": "https://github.com/bbrayan/Image_Processing_Library",
+      "name": "Image Processing Library"
+    },
+    {
+      "description": "Sand Castle is a simple real-time chat room and a collaborative whiteboard. I made it with React, Node.js, and Socket.IO; it allows users to join with a username into a room and communicate with other group users. The UI has a few features, including a whiteboard and a text view showing all current users.",
+      "git_url": "https://github.com/bbrayan/Sand_Castle",
+      "name": "Real Time Chat Room"
+    }
+  ],
+  "jarvis_projects": [
+    {
+      "description": "I developed a system to document and store hardware specs and resource usage for a Linux cluster in PostgreSQL. I created an MVP for Jarvis Linux Cluster Administration, including scripts to gather hardware data, track server usage, and launch PostgreSQL and its docker container. This resulted in a successful functional MVP for the Jarvis Linux Cluster Administration.",
+      "git_url": "/linux_sql",
+      "name": "Cluster Monitor"
+    },
+    {
+      "description": "This SQL project, created by me solely for learning purposes, focuses on developing and demonstrating my SQL proficiency. It involves using various SQL keywords to address specific questions and scenarios, serving as a valuable tool for skill enhancement. Additionally, it showcases my ability to design and implement complex database queries.",
+      "git_url": "/sql",
+      "name": "SQL application"
+    },
+    {
+      "description": "The Grep application, written in Java, emulates the functionality of the Linux grep command. This application scans files, identifies lines that match a given regular expression, and saves them to a file. It starts its search from a designated root directory, conducting a recursive search across all directories and files. Developed using IntelliJ IDE, Core Java, and Maven, this application is also deployed through Docker.",
+      "git_url": "/core_java",
+      "name": "Grep app"
+    },
+    {
+      "description": "This application serves as a trading platform for buying and selling assets. It is built using Java and relies on JDBC for database connectivity. The data is stored in a PostgreSQL (PSQL) database, and Maven (MVN) is used for managing the project's build and dependencies. Users can perform buy and sell transactions through the platform, but it does not retain a history of sold positions, focusing solely on trading functionality.",
+      "git_url": "/core_java",
+      "name": "Stock Quote App"
+    },
+    {
+      "description": "During my experience working on a Javascript project, I gained a comprehensive understanding of both Javascript and Typescript. The project proved to be an in-depth learning experience, covering fundamental Javascript concepts such as Callbacks and the Event-Loop, as well as more advanced topics in Typescript such as Generics and OOP. I was able to apply my new skills by creating data structures such as a Doubly Linked List, implementing a Sudoku solver, and solving complex algorithmic problems. As a result of this experience, I gained valuable knowledge in asynchronous programming, modular design, and the effectiveness of TypeScript's powerful type system.",
+      "git_url": "/JavaScript",
+      "name": "Javascript \u0026 Typescript"
+    }
+  ],
+  "name": "Brayan Boukhman",
+  "others": [
+    {
+      "bullets": [
+        "I was part of two different coding clubs, one back in High School and one at the University.",
+        "I enjoy learning about various frameworks and implementing them in novel ways.",
+        "I like to play challenging RPGs like divinity original sin 2."
+      ],
+      "title": "Hobbies"
+    }
+  ],
+  "professional_experience": [
+    {
+      "company": "Brightsquid Secure Communications Corporation",
+      "description": "I played a crucial role in designing and developing a HIPAA-compliant web-based messaging system that facilitates seamless communication between clinics and their patients. This system is actively used by a substantial user base, including 80,000 healthcare professionals and 395,000 patients across Canada and the US. Additionally, I contributed to creating an Appointment Reminder application, which involved integrating with various TELUS EMRs. This application streamlines the process of sending automated appointment reminders to patients, complete with pre-appointment questionnaires, significantly reducing No-Show rates.",
+      "duration": "Mar 2021 - Mar 2023,",
+      "title": "FullStack Developer"
+    },
+    {
+      "company": "OMERS",
+      "description": "I actively participated in the development, adaptation, and execution of test automation scripts using Selenium and Cypress to maintain the functional reliability of our applications. I collaborated closely with QA team colleagues and contributed to internal QA process enhancement initiatives. I conducted comprehensive reviews of test plans and case documents to ensure thorough test coverage.",
+      "duration": "May 2019 - Aug 2019,",
+      "title": "Student Analyst - QA"
+    },
+    {
+      "company": "Wilfrid Laurier University Waterloo Ontario",
+      "description": "Supported and marked over 100 students in Data Structures in Python, Java \u0026 C. Acted as a liaison between professor and student by providing weekly assignments through correspondence emails and assisting the students if needed.",
+      "duration": "Sep 2018 - Apr 2018",
+      "title": "Instructor Assistant"
+    },
+    {
+      "company": "OMERS",
+      "description": "Participated in solution evaluation, developed Proof of Concepts (PoCs), ensuring code quality, optimized application performance and low maintenance cost, and maintained Application infrastructure. I was predominantly using front-end tools in the React framework.",
+      "duration": "May 2018 - Aug 2018",
+      "title": "Student Analyst, Full Stack Developer"
+    }
+  ],
+  "skills": {
+    "competent": [
+      "GraphQL",
+      "JavaScript",
+      "React",
+      "Redux",
+      "React Router"
+    ],
+    "familiar": [
+      "Amazon AWS",
+      "Selenium",
+      "Amazon Lambda",
+      "Amazon RDS",
+      "Amazon S3 bucket"
+    ],
+    "proficient": [
+      "Java",
+      "Linux/Bash",
+      "RDBMS/SQL",
+      "Agile/Scrum",
+      "Git",
+      "Docker",
+      "sql",
+      "Spring Boot",
+      "Spring Framework",
+      "Hibernate",
+      "Gradle",
+      "Maven"
+    ]
+  },
+  "summary": "I have a demonstrated history of accomplishments in full-stack development, employing Java Spring for the backend and JavaScript React for the front end, specifically in enterprise applications for healthcare and financial sectors, catering to both sizable corporations and smaller enterprises. My expertise encompasses skillful coding, rigorous debugging, thorough testing, and effective troubleshooting of software applications while maintaining a comprehensive understanding of the Software Development Life Cycle (SDLC). I possess adept knowledge of Agile methodologies, applying Scrum and test-driven development (TDD). Throughout my career, I have consistently delivered top-notch solutions that meet and surpass client expectations, fostering enduring relationships founded on trust and dependability."
+}

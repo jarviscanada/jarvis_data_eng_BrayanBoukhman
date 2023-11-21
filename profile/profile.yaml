@@ -53,6 +53,9 @@ jarvis_projects:
   - name: "Stock Quote App"
     git_url: "/core_java"
     description: "This application serves as a trading platform for buying and selling assets. It is built using Java and relies on JDBC for database connectivity. The data is stored in a PostgreSQL (PSQL) database, and Maven (MVN) is used for managing the project's build and dependencies. Users can perform buy and sell transactions through the platform, but it does not retain a history of sold positions, focusing solely on trading functionality."
+  - name: "Javascript & Typescript"
+    git_url: "/JavaScript"
+    description: "During my experience working on a Javascript project, I gained a comprehensive understanding of both Javascript and Typescript. The project proved to be an in-depth learning experience, covering fundamental Javascript concepts such as Callbacks and the Event-Loop, as well as more advanced topics in Typescript such as Generics and OOP. I was able to apply my new skills by creating data structures such as a Doubly Linked List, implementing a Sudoku solver, and solving complex algorithmic problems. As a result of this experience, I gained valuable knowledge in asynchronous programming, modular design, and the effectiveness of TypeScript's powerful type system."
 
 # List of personal or academic projects
 # Feel free to add more projects
