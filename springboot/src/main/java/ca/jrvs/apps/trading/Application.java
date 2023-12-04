@@ -1,9 +1,16 @@
 package ca.jrvs.apps.trading;
 
-public class Application {
-    // Your program begins with a call to main().
-    // Prints "Hello, World" to the terminal window.
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+class Application {
+    private Logger logger = LoggerFactory.getLogger(Application.class);
+
     public static void main(String args[]) {
-        System.out.println("Hello, World");
+        SpringApplication.run(Application.class, args);
     }
+
 }

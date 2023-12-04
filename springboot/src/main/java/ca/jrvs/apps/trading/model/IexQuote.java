@@ -14,70 +14,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "avgTotalVolume",
-        "calculationPrice",
-        "change",
-        "changePercent",
-        "close",
-        "closeSource",
-        "closeTime",
-        "companyName",
-        "currency",
-        "delayedPrice",
-        "delayedPriceTime",
-        "extendedChange",
-        "extendedChangePercent",
-        "extendedPrice",
-        "extendedPriceTime",
-        "high",
-        "highSource",
-        "highTime",
-        "iexAskPrice",
-        "iexAskSize",
-        "iexBidPrice",
-        "iexBidSize",
-        "iexClose",
-        "iexCloseTime",
-        "iexLastUpdated",
-        "iexMarketPercent",
-        "iexOpen",
-        "iexOpenTime",
-        "iexRealtimePrice",
-        "iexRealtimeSize",
-        "iexVolume",
-        "lastTradeTime",
-        "latestPrice",
-        "latestSource",
-        "latestTime",
-        "latestUpdate",
-        "latestVolume",
-        "low",
-        "lowSource",
-        "lowTime",
-        "marketCap",
-        "oddLotDelayedPrice",
-        "oddLotDelayedPriceTime",
-        "open",
-        "openTime",
-        "openSource",
-        "peRatio",
-        "previousClose",
-        "previousVolume",
-        "primaryExchange",
-        "symbol",
-        "volume",
-        "week52High",
-        "week52Low",
-        "ytdChange",
-        "isUSMarketOpen"
-})
 /*
  * https://cloud.iexapis.com/stable/stock/{symbol}/quote
  * Model was generated from JSON data via https://www.jsonschema2pojo.org/
  */
 @Generated("jsonschema2pojo")
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
