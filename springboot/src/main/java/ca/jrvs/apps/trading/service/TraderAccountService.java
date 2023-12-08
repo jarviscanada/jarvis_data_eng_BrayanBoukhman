@@ -1,6 +1,8 @@
 package ca.jrvs.apps.trading.service;
 
+import ca.jrvs.apps.trading.dao.PositionJpaRepository;
 import ca.jrvs.apps.trading.model.Account;
+import ca.jrvs.apps.trading.model.Position;
 import ca.jrvs.apps.trading.model.Trader;
 import ca.jrvs.apps.trading.model.TraderAccountView;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,25 +12,28 @@ import org.slf4j.LoggerFactory;
 import ca.jrvs.apps.trading.dao.TraderJpaRepository;
 import ca.jrvs.apps.trading.dao.AccountJpaRepository;
 import ca.jrvs.apps.trading.dao.SecurityOrderJpaRepository;
+
+import java.util.List;
+
 @Service
 public class TraderAccountService {
     private final Logger logger = LoggerFactory.getLogger(TraderAccountService.class);
+    private final TraderJpaRepository traderJpaRepository;
+
+    private final AccountJpaRepository accountJpaRepository;
+    private final SecurityOrderJpaRepository securityOrderJpaRepository;
+
+    private final PositionJpaRepository positionJpaRepository;
 
     @Autowired
-    private final TraderJpaRepository traderDao;
-
-    @Autowired
-    private final AccountJpaRepository accountDao;
-
-    @Autowired
-    private final SecurityOrderJpaRepository securityOrderDao;
-
     public TraderAccountService(TraderJpaRepository traderJpaRepository,
                                 AccountJpaRepository accountJpaRepository,
-                                SecurityOrderJpaRepository securityOrderJpaRepository) {
-        this.traderDao = traderJpaRepository;
-        this.accountDao = accountJpaRepository;
-        this.securityOrderDao = securityOrderJpaRepository;
+                                SecurityOrderJpaRepository securityOrderJpaRepository,
+                                PositionJpaRepository positionJpaRepository) {
+        this.traderJpaRepository = traderJpaRepository;
+        this.accountJpaRepository = accountJpaRepository;
+        this.securityOrderJpaRepository = securityOrderJpaRepository;
+        this.positionJpaRepository = positionJpaRepository;
     }
     /**
      * Create a new trader and initialize a new account with 0 amount
@@ -44,7 +49,23 @@ public class TraderAccountService {
      * @throws IllegalArgumentException if a trader has null fields or id is not null
      */
     public TraderAccountView createTraderAndAccount(Trader trader) {
-        return null;
+        try {
+            // Save trader
+            trader = traderJpaRepository.save(trader);
+
+            // Create and save account
+            Account account = new Account();
+            account.setTrader(trader);
+            accountJpaRepository.save(account);
+
+            return new TraderAccountView(trader, account);
+        } catch (Exception e) {
+            // Log the error
+            logger.error("Error creating Trader and Account: " + e);
+        }
+
+        // If an exception occurs, throw an IllegalArgumentException
+        throw new IllegalArgumentException("Trader was null or contained null fields");
     }
 
     /**
@@ -58,7 +79,39 @@ public class TraderAccountService {
      * @throws IllegalArgumentException if traderId is null or not found or unable to delete
      */
     public void deleteTraderById(Integer traderId) {
-        //TODO
+        // Validate traderId
+        if (traderId == null) {
+            throw new IllegalArgumentException("TraderId must not be null");
+        }
+
+        // Get trader by Id
+        Trader trader = traderJpaRepository.findById(traderId)
+                .orElseThrow(() -> new IllegalArgumentException("Trader not found with ID: " + traderId));
+
+        // Check if the trader has any open positions
+        List<Position> positions = positionJpaRepository.getPositionsByAccountId(traderId);
+        if (!positions.isEmpty()) {
+            throw new IllegalArgumentException("Cannot delete trader with open positions");
+        }
+
+        // Get trader's account and check balance
+        Account account = accountJpaRepository.findByTraderId(traderId)
+                .orElseThrow(() -> new IllegalArgumentException("Trader account not found for ID: " + traderId));
+
+        if (account.getAmount() != 0.0) {
+            throw new IllegalArgumentException("Cannot delete trader with non-zero cash balance");
+        }
+
+        // Delete all security orders for the trader
+        securityOrderJpaRepository.deleteAllByAccountId(traderId);
+
+        // Delete the account
+        accountJpaRepository.deleteById(account.getId());
+
+        // Delete the trader
+        traderJpaRepository.deleteById(traderId);
+
+        logger.info("Successfully deleted trader with ID: " + traderId);
     }
 
     /**
@@ -74,7 +127,26 @@ public class TraderAccountService {
      * 									and fund is less than or equal to 0
      */
     public Account deposit(Integer traderId, Double fund) {
-        return null;
+        // Validate user input
+        if (traderId == null) {
+            throw new IllegalArgumentException("TraderId must not be null");
+        }
+
+        if (fund == null || fund <= 0) {
+            throw new IllegalArgumentException("Fund must be greater than 0");
+        }
+
+        // Find account by traderId
+        Account account = accountJpaRepository.findByTraderId(traderId)
+                .orElseThrow(() -> new IllegalArgumentException("Account not found for traderId: " + traderId));
+
+        // Update the amount accordingly
+        double currentAmount = account.getAmount();
+        double newAmount = currentAmount + fund;
+        account.setAmount(newAmount);
+
+        // Save the updated account
+        return accountJpaRepository.save(account);
     }
 
     /**
@@ -90,6 +162,30 @@ public class TraderAccountService {
      * 									and fund is less than or equal to 0
      */
     public Account withdraw(Integer traderId, Double fund) {
-        return null;
+        // Validate user input
+        if (traderId == null) {
+            throw new IllegalArgumentException("TraderId must not be null");
+        }
+
+        if (fund == null || fund <= 0) {
+            throw new IllegalArgumentException("Fund must be greater than 0");
+        }
+
+        // Find account by traderId
+        Account account = accountJpaRepository.findByTraderId(traderId)
+                .orElseThrow(() -> new IllegalArgumentException("Account not found for traderId: " + traderId));
+
+        // Check if there's enough balance to withdraw
+        double currentAmount = account.getAmount();
+        if (currentAmount < fund) {
+            throw new IllegalArgumentException("Insufficient funds for withdrawal");
+        }
+
+        // Update the amount accordingly
+        double newAmount = currentAmount - fund;
+        account.setAmount(newAmount);
+
+        // Save the updated account
+        return accountJpaRepository.save(account);
     }
 }

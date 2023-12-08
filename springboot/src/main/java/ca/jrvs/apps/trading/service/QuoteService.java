@@ -75,26 +75,33 @@ public class QuoteService {
         List<Quote> savedQuotes = new ArrayList<>();
 
         for (String ticker : tickers) {
-            try {
-                // Fetch IexQuote for the ticker
-                IexQuote iexQuote = findIexQuoteByTicker(ticker);
-
-                // Convert IexQuote to Quote entity
-                Quote quote = buildQuoteFromIexQuote(iexQuote);
-
-                // Save the quote to the database
-                saveQuote(quote);
-
-                // Add the saved quote to the list
+            Quote quote = saveQuoteByTicker(ticker);
+            if (quote != null) {
                 savedQuotes.add(quote);
-            } catch (IllegalArgumentException e) {
-                // Handle the exception if the ticker is not found from IEX
-                logger.error("Failed to save quote for ticker {}: {}", ticker, e.getMessage());
             }
         }
 
         return savedQuotes;
     }
+
+    public Quote saveQuoteByTicker(String ticker) {
+        try {
+            // Fetch IexQuote for the ticker
+            IexQuote iexQuote = findIexQuoteByTicker(ticker);
+
+            // Convert IexQuote to Quote entity
+            Quote quote = buildQuoteFromIexQuote(iexQuote);
+
+            // Save the quote to the database
+            return saveQuote(quote);
+        } catch (IllegalArgumentException e) {
+            // Handle the exception if the ticker is not found from IEX
+            logger.error("Failed to save quote for ticker {}: {}", ticker, e.getMessage());
+            return null; // or throw an exception based on your requirement
+        }
+    }
+
+
 
     /**
      * Find an IexQuote from the given ticker
