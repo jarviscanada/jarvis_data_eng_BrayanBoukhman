@@ -87,7 +87,7 @@ public class QuoteService {
     public Quote saveQuoteByTicker(String ticker) {
         try {
             // Fetch IexQuote for the ticker
-            IexQuote iexQuote = findIexQuoteByTicker(ticker);
+            IexQuote iexQuote = findIexQuoteByTicker(ticker.toUpperCase());
 
             // Convert IexQuote to Quote entity
             Quote quote = buildQuoteFromIexQuote(iexQuote);

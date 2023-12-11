@@ -46,13 +46,15 @@ public class OrderService {
     public SecurityOrder executeMarketOrder(MarketOrder marketOrder) {
         // Validate the market order
         validateMarketOrder(marketOrder);
+        //get quote and save it
+        Quote quote = quoteService.saveQuoteByTicker(marketOrder.getTicker());
 
         // Create a security order
         SecurityOrder securityOrder = new SecurityOrder();
         securityOrder.setAccount(findAccountById(marketOrder.getTraderId()));
-        securityOrder.setQuote(quoteService.saveQuoteByTicker(marketOrder.getTicker()));
+        securityOrder.setQuote(quote);
         securityOrder.setSize(marketOrder.getSize());
-        securityOrder.setPrice(securityOrder.getPrice());
+        securityOrder.setPrice(quote.getAskPrice());
         securityOrder.setStatus("PENDING");
 
         // Handle buy or sell orders

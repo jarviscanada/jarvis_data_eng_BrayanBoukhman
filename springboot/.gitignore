@@ -1,3 +1,4 @@
 .idea/
 target/
 trading.iml
+src/main/resources/application.properties

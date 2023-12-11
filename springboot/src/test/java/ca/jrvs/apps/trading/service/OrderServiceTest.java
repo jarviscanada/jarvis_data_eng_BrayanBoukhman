@@ -32,15 +32,16 @@ public class OrderServiceTest {
         if(!traderJpaRepository.existsById(1)) {
             Trader trader = TestHelper.createTestTrader();
             TraderAccountView traderAccountView = traderAccountService.createTraderAndAccount(trader);
-            traderAccountView.getTrader();
         }
     }
 
     @Test
     void executeMarketOrderTest() {
+        traderAccountService.deposit(1, 1000.0);
+
         MarketOrder marketOrder = new MarketOrder();
-        marketOrder.setTicker("aapl");
-        marketOrder.setSize(13);
+        marketOrder.setTicker("AAPL");
+        marketOrder.setSize(1);
         marketOrder.setOption("buy");
         marketOrder.setTraderId(1);
 
